@@ -150,4 +150,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://mybackpackapp.herokuapp.com']
 
+
 django_on_heroku.settings(locals())

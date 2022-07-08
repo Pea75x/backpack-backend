@@ -7,7 +7,7 @@ class Fabric(models.Model):
   name = models.CharField(max_length=50)
   image = models.CharField(max_length=300)
 
-def __str__(self):
+  def __str__(self):
       return self.name
 
 class Product(models.Model):
@@ -42,5 +42,5 @@ class Product(models.Model):
   image = models.CharField(max_length=200, null=True)
   quantity = models.IntegerField(validators=[MinValueValidator(0)])
 
-def __str__(self):
+  def __str__(self):
       return self.name
