@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'jwt_auth',
+    'bag',
     'products'
 ]
 
@@ -147,6 +149,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'jwt_auth.CustomUser'
 
 CSRF_TRUSTED_ORIGINS = ['https://mybackpackapp.herokuapp.com']
 
