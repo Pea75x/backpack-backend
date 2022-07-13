@@ -22,6 +22,7 @@ class Product(models.Model):
   HEART = 'Heart'
   POCKET = 'Pocket'
   CLASPS = 'Clasps'
+  SIDE_STRAP = 'Side strap'
   
   PART_CHOICES = [
     (BLANK, 'Blank'),
@@ -34,7 +35,8 @@ class Product(models.Model):
     (ZIP, 'Zip'),
     (HEART, 'Heart'),
     (POCKET, 'Pocket'),
-    (CLASPS, 'Clasps')
+    (CLASPS, 'Clasps'),
+    (SIDE_STRAP, 'Side strap')
   ]
   name = models.CharField(max_length=100)
   fabric = models.ForeignKey(Fabric, related_name='products', on_delete=models.CASCADE)
