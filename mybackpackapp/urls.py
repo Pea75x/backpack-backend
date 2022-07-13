@@ -15,14 +15,31 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from bag.views import BagById, BagList
 from products.views import *
 from jwt_auth.views import *
+from bag.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # FABRIC 
+    path('fabrics/', FabricList.as_view()),
+    path('fabric/<int:pk>', FabricById.as_view()),
+    # PRODUCTS   
     path('products/', ProductList.as_view()),
     path('product/<int:pk>/', ProductById.as_view()),
+    path('productsearch/', GetProductByPart.as_view()),
+    # USERS
     path('login/', LoginView.as_view()),
     path('register/', RegisterView.as_view()),
     path('credentials/', CredentialsView.as_view()),
+    # BAGS
+    path('bags/', BagList.as_view()),
+    path('bag/<int:pk>', BagById.as_view()),
+    # ORDERS
+    path('orders/', OrderList.as_view()),
+    path('order/<int:pk>', OrderById.as_view()),
+    # ORDER STATUS
+    path('orderstatus', OrderStatus.as_view()),
+    
 ]
