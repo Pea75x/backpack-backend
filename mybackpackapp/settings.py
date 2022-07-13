@@ -103,7 +103,7 @@ if ENV != 'DEV':
 else:
   DATABASES['default'] = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'mybackpackapp-custom-user',
+    'NAME': 'mybackpackapp-customuser',
     'HOST': 'localhost',
     'PORT': 5432
   }
@@ -150,7 +150,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'jwt_auth.CustomUser'
+AUTH_USER_MODEL = 'jwt_auth.Customuser'
 
 CSRF_TRUSTED_ORIGINS = ['https://mybackpackapp.herokuapp.com']
 

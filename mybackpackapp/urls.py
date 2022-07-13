@@ -21,7 +21,7 @@ from jwt_auth.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', ProductList.as_view()),
-    path('product/', ProductById.as_view()),
+    path('product/<int:pk>/', ProductById.as_view()),
     path('login/', LoginView.as_view()),
     path('register/', RegisterView.as_view()),
     path('credentials/', CredentialsView.as_view()),
