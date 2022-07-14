@@ -32,5 +32,5 @@ class PopulatedBagSerializer(BagSerializer):
   clasp_id = ProductSerializer()
   
 class PopulatedOrderSerializer(OrderSerializer):
-  bag_id = PopulatedBagSerializer(many=True)
+  bag_id = BagSerializer(many=True)
   order_status = OrderStatusSerializer(many=True)

@@ -54,10 +54,3 @@ class LoginView(APIView):
     )
     return Response({'token': token, 'message': f'Welcome back {user.username}!'})
 
-
-class CredentialsView(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request):
-        serializer = UserSerializer(request.user)
-        return Response(serializer.data)

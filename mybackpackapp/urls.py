@@ -32,10 +32,10 @@ urlpatterns = [
     # USERS
     path('login/', LoginView.as_view()),
     path('register/', RegisterView.as_view()),
-    path('credentials/', CredentialsView.as_view()),
     # BAGS
     path('bags/', BagList.as_view()),
     path('bag/<int:pk>', BagById.as_view()),
+    path('createbag/', CreateBag.as_view()),
     # ORDERS
     path('orders/', OrderList.as_view()),
     path('order/<int:pk>', OrderById.as_view()),

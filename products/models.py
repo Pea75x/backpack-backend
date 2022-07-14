@@ -11,32 +11,32 @@ class Fabric(models.Model):
       return self.name
 
 class Product(models.Model):
-  BLANK = 'Blank'
-  FRONT = 'Front'
-  BACK = 'Back'
-  TOP = 'Top'
-  BOTTOM = 'Bottom'
-  STRAP = 'Strap'
-  LINING = 'Lining'
-  ZIP = 'Zip'
-  HEART = 'Heart'
-  POCKET = 'Pocket'
-  CLASPS = 'Clasps'
-  SIDE_STRAP = 'Side strap'
+  BLANK = 'blank'
+  FRONT = 'front'
+  BACK = 'back'
+  TOP = 'top'
+  BOTTOM = 'bottom'
+  STRAP = 'strap'
+  LINING = 'lining'
+  ZIP = 'zip'
+  HEART = 'heart'
+  POCKET = 'pocket'
+  CLASPS = 'clasps'
+  SIDE_STRAP = 'side_strap'
   
   PART_CHOICES = [
-    (BLANK, 'Blank'),
-    (FRONT, 'Front'),
-    (BACK, 'Back'),
-    (TOP, 'Top'),
-    (BOTTOM, 'Bottom'),
-    (STRAP, 'Strap'),
-    (LINING, 'Lining'),
-    (ZIP, 'Zip'),
-    (HEART, 'Heart'),
-    (POCKET, 'Pocket'),
-    (CLASPS, 'Clasps'),
-    (SIDE_STRAP, 'Side strap')
+    (BLANK, 'blank'),
+    (FRONT, 'front'),
+    (BACK, 'back'),
+    (TOP, 'top'),
+    (BOTTOM, 'bottom'),
+    (STRAP, 'strap'),
+    (LINING, 'lining'),
+    (ZIP, 'zip'),
+    (HEART, 'heart'),
+    (POCKET, 'pocket'),
+    (CLASPS, 'clasps'),
+    (SIDE_STRAP, 'side_strap')
   ]
   name = models.CharField(max_length=100)
   fabric = models.ForeignKey(Fabric, related_name='products', on_delete=models.CASCADE)

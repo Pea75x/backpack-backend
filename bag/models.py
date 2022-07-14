@@ -16,6 +16,7 @@ class Bag(models.Model):
   pocket_id = models.ForeignKey(Product, related_name='pocket', on_delete=models.SET_NULL, null=True)
   clasp_id = models.ForeignKey(Product, related_name='clasp', on_delete=models.SET_NULL, null=True)
   name = models.CharField(max_length=50, null=True, blank=True)
+  price = models.DecimalField(max_digits=6, decimal_places=2)
 
   def __str__(self):
     return f'{self.customer_id} - {self.name}'
@@ -23,26 +24,26 @@ class Bag(models.Model):
 class Order(models.Model):
   bag_id = models.ForeignKey(Bag, related_name='order_number', on_delete=models.CASCADE)
   customer_id = models.ForeignKey(Customuser, related_name='order', on_delete=models.CASCADE)
-  price = models.DecimalField(max_digits=6, decimal_places=2)
+  total_price = models.DecimalField(max_digits=6, decimal_places=2)
    
   def __str__(self):
     return f'{self.customer_id} - {self.bag_id}'
 
 class OrderStatus(models.Model):
-  PENDING = 'Pending...'
-  CONFIRMED = 'Order Confirmed'
-  MAKING = 'Lovingly Being Made...'
-  CREATED = 'A Masterpiece is born!'
-  DISPATCHED = 'On its way to its new home!'
-  DELIVERED = 'Successfully Delivered!'
+  PENDING = 'pending'
+  CONFIRMED = 'confirmed'
+  MAKING = 'making'
+  CREATED = 'created'
+  DISPATCHED = 'dispatched'
+  DELIVERED = 'delivered'
   
   STATUS = [
-    (PENDING, 'Pending...'),
-    (CONFIRMED, 'Order Confirmed'),
-    (MAKING, 'Lovingly Being Made...'),
-    (CREATED, 'A Masterpiece is born!'),
-    (DISPATCHED, 'On its way to its new home!'),
-    (DELIVERED, 'Successfully Delivered!'),
+    (PENDING, 'pending'),
+    (CONFIRMED, 'confirmed'),
+    (MAKING, 'making'),
+    (CREATED, 'created'),
+    (DISPATCHED, 'dispatched'),
+    (DELIVERED, 'delivered'),
   ]
   order_id = models.ForeignKey(Order, related_name='order_status', on_delete=models.CASCADE)
   status = models.CharField(max_length=100, choices=STATUS, default=PENDING)
