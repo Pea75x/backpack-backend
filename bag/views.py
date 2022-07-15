@@ -9,7 +9,7 @@ from rest_framework import status
 # Create your views here.
 
 #! BAGS
-# GET ALL BAGS/ CREATE BAG
+#CREATE BAG
 class CreateBag(APIView):
   permission_classes = [IsAuthenticated,]
 
@@ -21,6 +21,7 @@ class CreateBag(APIView):
       return Response(data = bag_serializer.data, status = status.HTTP_201_CREATED)
     return Response(data = bag_serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
+# GET ALL BAGS
 class BagList(ListCreateAPIView):
     queryset = Bag.objects.all()
     serializer_class = BagSerializer
@@ -31,11 +32,23 @@ class BagById(RetrieveAPIView):
   serializer_class = PopulatedBagSerializer
 
 #! ORDERS
-# GET ALL ORDERS / CREATE ORDER
+# CREATE ORDER
+class CreateOrder(APIView):
+  permission_classes = [IsAuthenticated,]
+
+  def post(self, request):
+    request.data['customer_id'] = request.user.id
+    order_serializer = OrderSerializer(data= request.data)
+    if order_serializer.is_valid():
+      order_serializer.save()
+      return Response(data = order_serializer.data, status= status.HTTP_201_CREATED)
+    return Response (data= order_serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
+# GET ALL ORDERS
 class OrderList(ListCreateAPIView):
   queryset = Order.objects.all()
   serializer_class = OrderSerializer
-
+ 
 # GET FABRIC BY ID 
 class OrderById(RetrieveAPIView):
   queryset = Order.objects.all()
