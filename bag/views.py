@@ -14,8 +14,8 @@ class CreateBag(APIView):
   permission_classes = [IsAuthenticated,]
 
   def post(self, request):
-    request.data["customer_id"] = request.user.id
-    bag_serializer = BagSerializer(data = request.data)
+    request.data['customer_id'] = request.user.id
+    bag_serializer = BagSerializer(data= request.data)
     if bag_serializer.is_valid():
       bag_serializer.save()
       return Response(data = bag_serializer.data, status = status.HTTP_201_CREATED)
