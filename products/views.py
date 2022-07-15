@@ -28,6 +28,11 @@ class GetProductByPart(ListCreateAPIView):
         productData = queryset.filter(name__contains= partName)
         return productData
 
+# UPDATE PRODUCT
+class ProductlUpdateDestroy(RetrieveUpdateDestroyAPIView):
+  queryset = Product.objects.all()
+  serializer_class = ProductSerializer
+
 #! FABRICS
 # GET ALL FABRICS / CREATE FABRIC
 class FabricList(ListCreateAPIView):

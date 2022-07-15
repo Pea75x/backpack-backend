@@ -29,6 +29,7 @@ urlpatterns = [
     path('products/', ProductList.as_view()),
     path('product/<int:pk>/', ProductById.as_view()),
     path('productsearch/', GetProductByPart.as_view()),
+    path('productupdate/<int:pk>/', ProductlUpdateDestroy.as_view()),
     # USERS
     path('login/', LoginView.as_view()),
     path('register/', RegisterView.as_view()),
@@ -39,8 +40,9 @@ urlpatterns = [
     # ORDERS
     path('orders/', OrderList.as_view()),
     path('order/<int:pk>', OrderById.as_view()),
-    path('createorder/', CreateOrder.as_view()),
+    path('createorder/', CreateOrder.as_view()), 
+    path('userorders/', GetUserOrders.as_view()), 
     # ORDER STATUS
-    path('orderstatus', OrderStatus.as_view()),
+    path('orderstatus/', OrderStatus.as_view()),
     
 ]

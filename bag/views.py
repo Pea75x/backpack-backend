@@ -54,6 +54,19 @@ class OrderById(RetrieveAPIView):
   queryset = Order.objects.all()
   serializer_class = PopulatedOrderSerializer
 
+# GET ORDER BY USER
+class GetUserOrders(ListCreateAPIView):
+    serializer_class = PopulatedOrderSerializer
+    
+    def get_queryset(self):
+      queryset = Order.objects.all()
+      customerName = self.request.query_params.get('customer_id')
+
+      if customerName:
+        productData = queryset.filter(customer_id= customerName)
+        return productData
+
+
 #! ORDER STATUS
 # CREATE ORDER STATUS
 class OrderStatus(ListCreateAPIView):
