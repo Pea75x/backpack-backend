@@ -39,6 +39,7 @@ urlpatterns = [
     # ORDERS
     path('orders/', OrderList.as_view()),
     path('order/<int:pk>', OrderById.as_view()),
+    path('createorder/', CreateOrder.as_view()),
     # ORDER STATUS
     path('orderstatus', OrderStatus.as_view()),
     
