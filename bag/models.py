@@ -1,9 +1,18 @@
 from django.db import models
 from products.models import Product
 from jwt_auth.models import Customuser
+from django.contrib.postgres.fields import ArrayField
+
 # Create your models here.
+class Order(models.Model):
+  customer_id = models.ForeignKey(Customuser, related_name='order', on_delete=models.CASCADE)
+  created_date = models.DateTimeField(auto_now_add = True)
+  def __str__(self):
+    return f'{self.customer_id} - {self.created_date}'
+
 class Bag(models.Model):
   customer_id = models.ForeignKey(Customuser, related_name='bag', on_delete=models.CASCADE)
+  order_id = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
   front_id = models.ForeignKey(Product, related_name='front', on_delete=models.SET_NULL, null=True)
   back_id = models.ForeignKey(Product, related_name='back', on_delete=models.SET_NULL, null=True)
   top_id = models.ForeignKey(Product, related_name='top', on_delete=models.SET_NULL, null=True)
@@ -20,14 +29,6 @@ class Bag(models.Model):
 
   def __str__(self):
     return f'{self.customer_id} - {self.name}'
-
-class Order(models.Model):
-  bag_id = models.ForeignKey(Bag, related_name='order_number', on_delete=models.CASCADE)
-  customer_id = models.ForeignKey(Customuser, related_name='order', on_delete=models.CASCADE)
-  total_price = models.DecimalField(max_digits=6, decimal_places=2)
-   
-  def __str__(self):
-    return f'{self.customer_id} - {self.bag_id}'
 
 class OrderStatus(models.Model):
   PENDING = 'pending'

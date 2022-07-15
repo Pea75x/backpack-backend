@@ -18,7 +18,7 @@ class OrderStatusSerializer(serializers.ModelSerializer):
     fields = ("__all__")
 
 class PopulatedBagSerializer(BagSerializer):
-  order_number = OrderSerializer()
+  order_id = OrderSerializer()
   front_id = ProductSerializer()
   back_id = ProductSerializer()
   top_id = ProductSerializer()
@@ -32,5 +32,5 @@ class PopulatedBagSerializer(BagSerializer):
   clasp_id = ProductSerializer()
   
 class PopulatedOrderSerializer(OrderSerializer):
-  bag_id = BagSerializer(many=True)
   order_status = OrderStatusSerializer(many=True)
+  items = PopulatedBagSerializer(many=True)
