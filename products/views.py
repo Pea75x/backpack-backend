@@ -25,7 +25,20 @@ class GetProductByPart(ListCreateAPIView):
       partName = self.request.query_params.get('part')
 
       if partName:
-        productData = queryset.filter(name__contains= partName)
+        productData = queryset.filter(part= partName)
+        return productData
+
+# GET PRODUCT BY FABRIC
+class GetProductByFabric(ListCreateAPIView):
+    serializer_class = PopulatedProductSerializer
+    
+    def get_queryset(self):
+      queryset = Product.objects.all()
+      fabricName = int(self.request.query_params.get('fabric'))
+
+      if fabricName:
+        print(fabricName)
+        productData = queryset.filter(fabric=fabricName)
         return productData
 
 # UPDATE PRODUCT

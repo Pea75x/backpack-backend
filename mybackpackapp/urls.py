@@ -28,7 +28,8 @@ urlpatterns = [
     # PRODUCTS   
     path('products/', ProductList.as_view()),
     path('product/<int:pk>/', ProductById.as_view()),
-    path('productsearch/', GetProductByPart.as_view()),
+    path('productpart/', GetProductByPart.as_view()),
+    path('productfabric/', GetProductByFabric.as_view()),
     path('productupdate/<int:pk>/', ProductlUpdateDestroy.as_view()),
     # USERS
     path('login/', LoginView.as_view()),
