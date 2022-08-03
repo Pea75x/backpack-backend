@@ -22,7 +22,7 @@ class Bag(models.Model):
   zip = models.ForeignKey(Product, related_name='zip', on_delete=models.SET_NULL, null=True)
   heart = models.ForeignKey(Product, related_name='heart', on_delete=models.SET_NULL, null=True)
   pocket = models.ForeignKey(Product, related_name='pocket', on_delete=models.SET_NULL, null=True)
-  clasp = models.ForeignKey(Product, related_name='clasp', on_delete=models.SET_NULL, null=True)
+  clasps = models.ForeignKey(Product, related_name='clasps', on_delete=models.SET_NULL, null=True)
   name = models.CharField(max_length=50, null=True, blank=True)
   price = models.DecimalField(max_digits=6, decimal_places=2)
 
