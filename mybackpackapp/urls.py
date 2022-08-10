@@ -40,6 +40,7 @@ urlpatterns = [
     path('createbag/', CreateBag.as_view()),
     # ORDERS
     path('orders/', OrderList.as_view()),
+    path('populatedorders/', PopulatedOrderList.as_view()),
     path('order/<int:pk>', OrderById.as_view()),
     path('createorder/', CreateOrder.as_view()), 
     path('userorders/', GetUserOrders.as_view()), 

@@ -48,7 +48,24 @@ class CreateOrder(APIView):
 class OrderList(ListCreateAPIView):
   queryset = Order.objects.all()
   serializer_class = OrderSerializer
- 
+
+# GET ALL POPULATED ORDERS 
+class PopulatedOrderList(APIView):
+    # List Authors
+    def get(self, request):
+
+        # Load all authors from the database
+        orders = Order.objects.all()
+
+        # Serialize the authors to JSON by using an AuthorSerializer with the many=True flag        
+        serialized_orders = PopulatedOrderSerializer(orders, many=True)
+
+        # Return the serialized authors with a HTTP 200 status code
+        return Response(data=serialized_orders.data, status=status.HTTP_200_OK)
+
+
+
+
 # GET FABRIC BY ID 
 class OrderById(RetrieveAPIView):
   queryset = Order.objects.all()
