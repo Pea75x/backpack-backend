@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import *
 from products.serializers.common import ProductSerializer
+from jwt_auth.serializers import userSerializerForOrder
 
 class BagSerializer(serializers.ModelSerializer):
   class Meta:
@@ -43,5 +44,6 @@ class PopulatedForOrderBagSerializer(BagSerializer):
   clasps = ProductSerializer()
   
 class PopulatedOrderSerializer(OrderSerializer):
+  customer_id = userSerializerForOrder()
   order_status = OrderStatusSerializer(many=True)
   items = PopulatedForOrderBagSerializer(many=True)

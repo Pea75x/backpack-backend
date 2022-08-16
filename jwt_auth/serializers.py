@@ -31,3 +31,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('__all__')
+
+class userSerializerForOrder(serializers.ModelSerializer):
+  class Meta:
+    model = User
+    fields = ("username", "address1", "address2", "postcode")
